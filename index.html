@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>圣域酱</title>
+  <!-- css样式和data帖子数据 -->
+  <link href="./src/css/style.min.css" rel="stylesheet">
+  <script src="./src/data/index.js"></script>
+  <!-- 加载插件 -->
+  <link href="./src/js/vediojs/video-js.min.css" rel="stylesheet">
+  <script src="./src/js/lazysizes.min.js"></script>
+  <script src="./src/js/vediojs/video.min.js"></script>
+  <script src="./src/js/vediojs/videojs-contrib-hls.min.js"></script>
+  <!-- 处理路由和HTML等 -->
+  <script src="./src/router/index.js"></script>
+  <script src="./src/utils/handle.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+<script>
+  // 获取页面参数page，加载对应的帖子
+  let pageData = dealData(window.location.search)
+  if(!pageData) {
+    console.log('未获取页面参数page！');
+    // alert('未获取页面参数！')
+    // TODO: 也可以渲染目录页面、或者登录页
+  } else {
+    // 处理数据，渲染DOM
+    let app = document.getElementById("app")
+    let nodes = startRender(pageData)
+    nodes.map(e => app.appendChild(e))
+    // 初始化视频组件
+    if(videoIds.length > 0) {
+      videoIds.map(e => videojs(e, { "poster": "", "controls": "true" }))
+    }
+  }
+  
+</script>
+</html>

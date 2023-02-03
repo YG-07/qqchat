@@ -1,0 +1,40 @@
+1.下载安装Node，修改prefix和cache路径
+1)使用：
+npm config set prefix "prefix文件夹路径"
+npm config set cache "cache文件夹路径"
+2)再在环境变量添加npm模块路径
+博客：https://yq.aliyun.com/articles/618450
+3)使用安装npm全局安装yarn、vue、webpack、vue-cli等
+npm i -g vue
+npm i -g yarn
+npm i -g webpack
+npm i -g @vue/cli
+npm i -g @vue/cli-init
+
+
+
+2.安装git工具
+1)设置用户签名
+git config --global user.name USERNAME
+git config --global user.email USEREMAIL
+2)常用的init、add、commit、reflog和log指令
+3)版本控制（控制HARD指针）
+版本回溯：git reset --hard 版本号
+4）分支
+分支创建branch、切换checkout、合并merge
+5）远程仓库
+克隆clone、推送push、拉取pull
+git remote add 别名 远程仓库地址
+remove 移除
+6）强制合并
+git pull 远程 本地分支 --allow-unrelated-histories
+博客：https://blog.csdn.net/qq_39400546/article/details/100150320
+7）管理账号凭据“凭据管理器”
+8）使用SSH免密登录：
+ssh-keygen -t rsa -C 注释如邮箱
+直接三次回车
+
+git remote -v
+
+// 从已有仓库推送
+git push -u origin master
