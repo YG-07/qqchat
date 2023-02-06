@@ -1,6 +1,5 @@
 let videoIds = []
 
-
 /******************** 消息模板 ************************ */
 
 /** 文本消息 */
@@ -63,9 +62,9 @@ const fileMsgDom = function (config) {
 /** 目录消息 更新时间/说明/二维码图片地址 */
 const menuMsgDom = function (config) {
   // 是否不是默认域名，是则当成完整链接，否则拼接
-  if(!config.nosite) {
-    config.src = `https://a-8geh111ac863e942-1312158730.tcloudbaseapp.com${config.src}`
-  }
+  let tmpSrc = config.nosite ?
+    config.src :
+    `https://a-8geh111ac863e942-1312158730.tcloudbaseapp.com${config.src}`;
   let html = `
   <div class="menu-msg">
     <div class="notice">
@@ -73,7 +72,7 @@ const menuMsgDom = function (config) {
       <span>:</span>
       <span style="color: red;">${config.s}</span>
     </div>
-    <img src="${config.src}"/>
+    <img src="${tmpSrc}"/>
   </div>
   `
   return html
@@ -87,7 +86,7 @@ const phoneTopInstance = function () {
   <div class="between-item">
     <div class="top-item">
       <img class="item" src="assets/pageSth/信号.png" />
-      <div class="item">中国移动&nbsp;&nbsp;4G</div>
+      <div class="item">中国移动&nbsp;&nbsp;5G</div>
     </div>
     <div class="top-item">
       <img class="item" src="assets/pageSth/电量.png" />
@@ -98,11 +97,64 @@ const phoneTopInstance = function () {
   return dom
 }
 
+/** 搜索框按了回车键 */
+const keyupEnter = function (e, value) {
+  if(e.keyCode == 13) {
+    okSearch(e, value)
+  }
+}
+/** 搜索过滤 */
+const okSearch = function (e, value) {
+  let msgAreaDom = document.getElementsByClassName("msg-area")[0]
+  let tmpMsgAreaDom = document.createElement('div')
+  let tmpPageData = []
+  if(value === '') {
+    tmpPageData = [...pageData]
+  } else {
+    tmpPageData = pageData.filter(item => (item.type == 'float' || item.s.includes(value) || item.up.includes(value)))
+  }
+  tmpMsgAreaDom.appendChild(createOneMsg({type: 'word', msg: `获取记录数${tmpPageData.length - 1}条`}))
+  for(let i = 0; i < tmpPageData.length; ++i) {
+    tmpMsgAreaDom.appendChild(createOneMsg(tmpPageData[i]))
+  }
+  msgAreaDom.innerHTML = tmpMsgAreaDom.innerHTML
+}
+
+/** 搜索栏实例 */
+const searchInstance = function () {
+  let dom = document.createElement('div')
+  dom.className = "search-area"
+  let inputDom =  document.createElement('input')
+  let buttonDom = document.createElement('button')
+  inputDom.setAttribute('type', 'text')
+  inputDom.setAttribute('placeholder', "搜索关键字")
+  // 事件
+  inputDom.addEventListener('keyup', function(e) {
+    keyupEnter(e, inputDom.value)
+  }, false)
+  buttonDom.addEventListener('click', function(e) {
+    okSearch(e, inputDom.value)
+  }, false)
+  buttonDom.innerHTML = "搜 索"
+
+  dom.appendChild(inputDom)
+  dom.appendChild(buttonDom)
+  return dom
+}
+
 /** 头像图片实例 参数src/class/style */
 const headImgInstance = function(opt = {}) {
   let dom = document.createElement('div')
   dom.className = "head-area"
   dom.innerHTML = `<img data-src="${opt.src || 'assets/pageSth/头像1.png'}" class="lazyload" style="" />`
+  return dom
+}
+
+/** 悬浮窗实例 */
+const floatInstance = function(config) {
+  let dom = document.createElement('div')
+  dom.className = "float-area"
+  dom.innerHTML = `<a href="${config.url}">${config.msg}</a>`
   return dom
 }
 
@@ -133,7 +185,10 @@ const createOneMsg = function (config) {
     msgDom.style.display = 'flex'
   }
   // XXX: 2.根据type类型配置新增的消息模板
-  else {
+  else if(config.type == 'float') {
+    return floatInstance(config)
+  }
+  else if(!config.type) {
     html = menuMsgDom(config)
     msgDom.style.display = 'flex'
   }
@@ -168,14 +223,16 @@ const string2Dom = function (string) {
 const startRender = function(data) {
   // 顶部样式
   let phoneTopDom = phoneTopInstance()
+  let searchDom = searchInstance()
   // 消息区域 循环生成消息
   let msgAreaDom = document.createElement('div')
   msgAreaDom.className = "msg-area"
   console.log('data', data);
+  msgAreaDom.appendChild(createOneMsg({type: 'word', msg: `获取记录数${data.length - 1}条`}))
   for(let i = 0; i < data.length; ++i) {
-    msgAreaDom.appendChild(createOneMsg(data[i]))
+    msgAreaDom.appendChild(createOneMsg(pageData[i]))
   }
-  return [phoneTopDom, msgAreaDom]
+  return [phoneTopDom, searchDom, msgAreaDom]
 }
 
 /** 处理数据 路由 */

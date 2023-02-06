@@ -56,6 +56,47 @@ body {
   justify-content: center;
 }
 
+#app .float-area {
+  position: fixed;
+  z-index: 100;
+  right: -5px;
+  top: 30%;
+  color: #fff;
+  background: #006eff;
+  border-radius: 5px;
+}
+
+#app .float-area a {
+  color: #fff;
+  max-width: 2em;
+  display: flex;
+  padding: 15px 10px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+#app .search-area {
+  display: flex;
+  background: #fff;
+  padding: 10px;
+  border-bottom: 1px solid #c8c8c8;
+}
+
+#app .search-area input {
+  border-radius: calc(1rem + 20px);
+  padding: 10px 20px;
+  outline: none;
+  font-size: 1em;
+  flex: 1;
+}
+
+#app .search-area button {
+  border-radius: calc(1rem + 20px);
+  padding: 10px 25px;
+  outline: none;
+  margin-left: 10px;
+}
+
 #app .msg-area {
   display: flex;
   flex-direction: column;
@@ -75,6 +116,7 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   padding-right: 10px;
+  width: 10%;
 }
 
 #app .msg-area .one-msg .head-area img {

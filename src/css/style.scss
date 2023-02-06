@@ -48,6 +48,42 @@ body {
       justify-content: center;
     }
   }
+  .float-area {
+    position: fixed;
+    z-index: 100;
+    right: -5px;
+    top: 30%;
+    color: #fff;
+    background: #006eff;
+    border-radius: 5px;
+    a {
+      color: #fff;
+      max-width: 2em;
+      display: flex;
+      padding: 15px 10px;
+      line-height: 1.5;
+      text-decoration: none;
+    }
+  }
+  .search-area {
+    display: flex;
+    background: #fff;
+    padding: 10px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    input {
+      border-radius: calc(1rem + 20px);
+      padding: 10px 20px;
+      outline: none;
+      font-size: 1em;
+      flex: 1;
+    }
+    button {
+      border-radius: calc(1rem + 20px);
+      padding: 10px 25px;
+      outline: none;
+      margin-left: 10px;
+    }
+  }
   .msg-area {
     display: flex;
     flex-direction: column;
@@ -63,6 +99,7 @@ body {
         justify-content: flex-start;
         align-items: flex-start;
         padding-right: 10px;
+        width: 10%;
         img {
           width: 100%;
           border-radius: 50%;
