@@ -9,7 +9,11 @@ html, body, #app {
 body {
   /** 修改背景 */
   // background: rgb(236, 236, 236);
-  background: url('../../assets/img/006.jpg');
+  // background: url('../../assets/img/006.jpg');
+  background: url('https://a-8geh111ac863e942-1312158730.tcloudbaseapp.com/test/beijing.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 #app {
@@ -54,7 +58,7 @@ body {
     right: -5px;
     top: 30%;
     color: #fff;
-    background: #006eff;
+    background: rgba(0, 110, 255, 0.7);
     border-radius: 5px;
     a {
       color: #fff;
@@ -67,11 +71,12 @@ body {
   }
   .search-area {
     display: flex;
-    background: #fff;
+    background: rgba(255,255,255, 0.6);
     padding: 10px;
     border-bottom: 1px solid rgb(200, 200, 200);
     input {
       border-radius: calc(1rem + 20px);
+      background: rgba(255,255,255, 0.7);
       padding: 10px 20px;
       outline: none;
       font-size: 1em;
@@ -108,12 +113,13 @@ body {
       }
       .msg-box {
         flex: 1;
+        max-width: 60vw;
         flex-wrap: wrap;    // 文本换行
         .msg {
           position: relative;
           padding: 10px;
           border-radius: 3px;
-          background: #fff;
+          background: rgba(255,255,255, 0.7);
           // background: rgb(150, 247, 107);
           .download {
             display: flex;
@@ -143,7 +149,7 @@ body {
           left: -12px;
           top: 15px;
           border: 6px solid;
-          border-color: transparent #fff transparent transparent;
+          border-color: transparent rgba(255,255,255, 0.7) transparent transparent;
           // border-color: transparent rgb(150, 247, 107) transparent transparent;
         }
         img {

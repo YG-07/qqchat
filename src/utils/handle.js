@@ -146,7 +146,7 @@ const searchInstance = function () {
 const headImgInstance = function(opt = {}) {
   let dom = document.createElement('div')
   dom.className = "head-area"
-  dom.innerHTML = `<img data-src="${opt.src || 'assets/pageSth/头像1.png'}" class="lazyload" style="" />`
+  dom.innerHTML = `<img data-src="${opt.src || 'assets/pageSth/头像.png'}" class="lazyload" style="" />`
   return dom
 }
 
