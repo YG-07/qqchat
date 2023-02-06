@@ -22,10 +22,10 @@
 </body>
 <script>
   // 获取页面参数page，加载对应的帖子
-  let pageData = dealData(window.location.search)
+  let pageData = dealData(window.location.search || '?page=menu')
   if(!pageData) {
-    console.log('未获取页面参数page！');
-    // alert('未获取页面参数！')
+    // console.log('未获取页面参数page！');
+    alert('未获取页面参数！')
     // TODO: 也可以渲染目录页面、或者登录页
   } else {
     // 处理数据，渲染DOM

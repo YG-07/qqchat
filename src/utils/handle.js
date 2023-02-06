@@ -60,6 +60,24 @@ const fileMsgDom = function (config) {
 }
 
 // XXX：1. 此处新增消息模板
+/** 目录消息 更新时间/说明/二维码图片地址 */
+const menuMsgDom = function (config) {
+  // 是否不是默认域名，是则当成完整链接，否则拼接
+  if(!config.nosite) {
+    config.src = `https://a-8geh111ac863e942-1312158730.tcloudbaseapp.com${config.src}`
+  }
+  let html = `
+  <div class="menu-msg">
+    <div class="notice">
+      <span style="color: blue;">${config.up}</span>
+      <span>:</span>
+      <span style="color: red;">${config.s}</span>
+    </div>
+    <img src="${config.src}"/>
+  </div>
+  `
+  return html
+}
 
 /** 页面手机顶部栏实例 */
 const phoneTopInstance = function () {
@@ -115,6 +133,11 @@ const createOneMsg = function (config) {
     msgDom.style.display = 'flex'
   }
   // XXX: 2.根据type类型配置新增的消息模板
+  else {
+    html = menuMsgDom(config)
+    msgDom.style.display = 'flex'
+  }
+
   msgItemDom.innerHTML = html
   msgDom.appendChild(msgItemDom)
   oneMsgDom.appendChild(headAreaDom)
@@ -148,6 +171,7 @@ const startRender = function(data) {
   // 消息区域 循环生成消息
   let msgAreaDom = document.createElement('div')
   msgAreaDom.className = "msg-area"
+  console.log('data', data);
   for(let i = 0; i < data.length; ++i) {
     msgAreaDom.appendChild(createOneMsg(data[i]))
   }

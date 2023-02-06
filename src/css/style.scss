@@ -63,10 +63,10 @@ body {
         justify-content: flex-start;
         align-items: flex-start;
         padding-right: 10px;
-        width: 10%;
         img {
           width: 100%;
           border-radius: 50%;
+          max-width: 64px;
         }
       }
       .msg-box {
@@ -76,7 +76,8 @@ body {
           position: relative;
           padding: 10px;
           border-radius: 3px;
-          background: rgb(150, 247, 107);
+          background: #fff;
+          // background: rgb(150, 247, 107);
           .download {
             display: flex;
             align-items: center;
@@ -84,6 +85,16 @@ body {
               width: 20px;
               height: 20px;
               margin-right: 10px;
+            }
+          }
+          /** 新增模板样式  */
+          .menu-msg {
+            display: flex;
+            flex-direction: column;
+            img {
+              width: 100%;
+              height: auto;
+              max-width: 400px;
             }
           }
         }
@@ -95,7 +106,8 @@ body {
           left: -12px;
           top: 15px;
           border: 6px solid;
-          border-color: transparent rgb(150, 247, 107) transparent transparent;
+          border-color: transparent #fff transparent transparent;
+          // border-color: transparent rgb(150, 247, 107) transparent transparent;
         }
         img {
           width: 100%;

@@ -7,5 +7,6 @@ const require = function (name) {
 }
 
 // 引入数据
+require('menu')
 require('帖子1/296c69d7-ab86-7362-570e-550c1436476e')
 require('帖子2/8f257b42-3261-3b75-e580-4b9fe69c698b')
