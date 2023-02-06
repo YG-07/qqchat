@@ -1,5 +1,20 @@
 const menu = [
   {
+    "type": "word",
+    "msg": `<font color="red">在最前面的就是群里刚刚发的</font>，标题前的时间给你一个对照。。如果遇到<font color="red">封群</font>或者<font color="red">群解散</font>,直接扫这个码,一样的方式进新群,务必<font color="red">保存</font>到自己相册避免走失。</font><br><font color="gree">↓更新总目录↓</font><img src="https://a-8geh111ac863e942-1312158730.tcloudbaseapp.com/test/mulu.png"/>`
+  },
+  {
+    "type": "word",
+    "msg": `之前发的全部失效了（账户被封了）总之就继续正常更新，不影响。以前的会挑一些精品的补档，效率不会太高，日常的更新已经非常花时间。<br><font color="red">还有请大家多多转发，给回回血，给点更新动力。。。</font>`
+  },
+  {
+    "type": "word",
+    "msg": `有问题联系<font color="red"><a href="http://wpa.qq.com/msgrd?v=3&uin=2486903581&site=qq&menu=yes"></font>2486903581</font></a>这个管理。`
+  },
+
+  /** 以下是更新区 */
+
+  {
     "id": "240",
     "up": "2023/02/05/00:06",
     "s": "[SLG佳作/官中/PC+安卓] 妹生活～单色～ 官方中文版 v2.03 +修改存档",
@@ -1443,6 +1458,6 @@ const menu = [
     "id": "0",
     "type": "float",
     "msg": "更多信息点我进群",
-    "url": "../../index.html?page=join-us"
+    "url": "./index.html?page=join-us"
   }
 ]

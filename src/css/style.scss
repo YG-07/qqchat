@@ -9,8 +9,8 @@ html, body, #app {
 body {
   /** 修改背景 */
   // background: rgb(236, 236, 236);
-  // background: url('../../assets/img/006.jpg');
-  background: url('https://a-8geh111ac863e942-1312158730.tcloudbaseapp.com/test/beijing.jpg');
+  background: url('../../assets/img/006.jpg');
+  // background: url('https://a-8geh111ac863e942-1312158730.tcloudbaseapp.com/test/beijing.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -25,6 +25,7 @@ body {
     padding: 15px;
     border-bottom: 1px solid rgb(200, 200, 200);
     position: relative;
+    font-family: '雅黑';
     font-size: 12px;
     & > div {
       position: absolute;
@@ -113,12 +114,13 @@ body {
       }
       .msg-box {
         flex: 1;
-        max-width: 60vw;
+        max-width: 80vw;
         flex-wrap: wrap;    // 文本换行
         .msg {
           position: relative;
           padding: 10px;
           border-radius: 3px;
+          font-weight: bold;
           background: rgba(255,255,255, 0.7);
           // background: rgb(150, 247, 107);
           .download {

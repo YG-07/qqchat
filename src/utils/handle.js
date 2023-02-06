@@ -111,7 +111,7 @@ const okSearch = function (e, value) {
   if(value === '') {
     tmpPageData = [...pageData]
   } else {
-    tmpPageData = pageData.filter(item => (item.type == 'float' || item.s.includes(value) || item.up.includes(value)))
+    tmpPageData = pageData.filter(item => (item.type == 'float' || (item.s && item.s.includes(value)) || (item.up && item.up.includes(value))))
   }
   tmpMsgAreaDom.appendChild(createOneMsg({type: 'word', msg: `获取记录数${tmpPageData.length - 1}条`}))
   for(let i = 0; i < tmpPageData.length; ++i) {
@@ -228,10 +228,16 @@ const startRender = function(data) {
   let msgAreaDom = document.createElement('div')
   msgAreaDom.className = "msg-area"
   console.log('data', data);
-  msgAreaDom.appendChild(createOneMsg({type: 'word', msg: `获取记录数${data.length - 1}条`}))
+  msgAreaDom.appendChild(createOneMsg({type: 'word', msg: `...`}))
+  let count = 0
   for(let i = 0; i < data.length; ++i) {
-    msgAreaDom.appendChild(createOneMsg(pageData[i]))
+    let oneMsg = pageData[i]
+    if(!oneMsg.type) {
+      count++
+    }
+    msgAreaDom.appendChild(createOneMsg(oneMsg))
   }
+  msgAreaDom.childNodes[0].innerHTML = createOneMsg({type: 'word', msg: `获取记录数${count}条`}).innerHTML
   return [phoneTopDom, searchDom, msgAreaDom]
 }
 
