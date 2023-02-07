@@ -219,6 +219,19 @@ const string2Dom = function (string) {
   return p.childNodes[0]
 }
 
+/** 字符串转params对象 */
+const string2Params = function (string) {
+  let str = (string[0] == '?') ? string.slice(1) : string
+  let strArr = str.split('&')
+  let params = {}
+  for(let i = 0; i < strArr.length; ++i) {
+    let kv = strArr[i].split('=')
+    if(kv.length != 2 || (kv && !kv[0])) { continue }
+    params[kv[0]] = kv[1]
+  }
+  return params
+}
+
 /** 开始渲染Dom */
 const startRender = function(data) {
   // 顶部样式
@@ -243,9 +256,11 @@ const startRender = function(data) {
 
 /** 处理数据 路由 */
 const dealData = function(search) {
-  if(!search) { return null }
+  if(!search) { return menu }
+  let obj = string2Params(search)
   // XXX: 可修改Url参数名page，访问链接形如：https://xxxxx.com/?page=xxxx
-  let path = search.replace('?page=', '')
+  let path = obj.page
+  if(!path) { return menu }
   for(let route in router) {
     if(route == path) {
       return router[route]

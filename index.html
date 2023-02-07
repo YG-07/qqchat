@@ -22,7 +22,7 @@
 </body>
 <script>
   // 获取页面参数page，加载对应的帖子
-  let pageData = dealData(window.location.search || '?page=menu')
+  let pageData = dealData(window.location.search)
   if(!pageData) {
     // console.log('未获取页面参数page！');
     alert('未获取页面参数！')
